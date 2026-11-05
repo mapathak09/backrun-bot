@@ -1,0 +1,38 @@
+{
+  "description": "Back-running target selection criteria",
+  "selection_logic": {
+    "type": "NOT_LATEST_LAUNCH",
+    "note": "Back-running does NOT target latest launches. It monitors ALL pending transactions.",
+    "filter_criteria": {
+      "min_liquidity_usd": 50000,
+      "min_trade_size_eth": 0.1,
+      "exclude_age_hours": 24,
+      "exclude_honeypot": true,
+      "exclude_high_tax": true,
+      "target_types": [
+        "large_buy_order",
+        "liquidity_addition",
+        "large_eth_transfer_to_contract"
+      ]
+    }
+  },
+  "monitoring": {
+    "method": "mempool_subscription",
+    "poll_interval_seconds": 0.5,
+    "process_rate_limit": "Every 5th tx to avoid rate limits",
+    "tracking": "Recent 50 tx hashes tracked",
+    "backrun_delay": "0 blocks - immediate after target",
+    "gas_multipl": "1.1x target gas price"
+  },
+  "tokens_to_avoid": [
+    "Unverified new launches (< 24h)",
+    "Tokens with >25% buy/sell tax",
+    "Tokens with $0 liquidity",
+    "Honeypot tokens (verified via DexScreener API)"
+  ],
+  "recommended_test_targets": [
+    "USDC/WETH (Uniswap V2/V3)",
+    "USDT/WETH (Uniswap V2)",
+    "DAI/WETH (Sushiswap/SparkSwap)"
+  ]
+}

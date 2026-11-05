@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/config.py
+src/main.py
+src/backrun_bot.egg-info/PKG-INFO
+src/backrun_bot.egg-info/SOURCES.txt
+src/backrun_bot.egg-info/dependency_links.txt
+src/backrun_bot.egg-info/requires.txt
+src/backrun_bot.egg-info/top_level.txt
+tests/test_bot.py

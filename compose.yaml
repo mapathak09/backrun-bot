@@ -1,0 +1,18 @@
+services:
+  backrun-bot:
+    build: .
+    container_name: backrun-bot
+    restart: unless-stopped
+    environment:
+      - ETH_NODE_URL=${ETH_NODE_URL}
+      - PRIVATE_KEY=${PRIVATE_KEY}
+      - TARGET_TOKEN_ADDRESS=${TARGET_TOKEN_ADDRESS}
+      - TARGET_AMOUNT_THRESHOLD=${TARGET_AMOUNT_THRESHOLD}
+      - BACKRUN_SLIPPAGE=${BACKRUN_SLIPPAGE}
+      - GAS_MULTIPLIER=${GAS_MULTIPLIER}
+      - USE_FLASHBOTS=${USE_FLASHBOTS}
+      - MEV_ENDPOINT=${MEV_ENDPOINT}
+      - MEMPOOL_POLLING_INTERVAL=${MEMPOOL_POLLING_INTERVAL}
+      - MIN_PROFIT_THRESHOLD=${MIN_PROFIT_THRESHOLD}
+    volumes:
+      - ./.env:/app/.env:ro

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "backrun-bot"
+version = "0.2.0"
+description = "Production-grade Back-Running MEV Bot"
+requires-python = ">=3.10"
+dependencies = [
+    "web3>=7.0",
+    "python-dotenv>=1.0",
+    "requests>=2.28",
+    "aiohttp>=3.8",
+    "tenacity>=9.0",
+    "pydantic>=2.0",
+    "prometheus-client>=0.19",
+    "aiofiles>=23.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "black", "flake8", "mypy"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
